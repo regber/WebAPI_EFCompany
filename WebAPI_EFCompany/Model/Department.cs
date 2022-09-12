@@ -11,7 +11,7 @@ namespace WebAPI_EFCompany.Model
 
         public string Name { get; set; }
 
-        public Employee Head { get; set; }
+        public Employee? Head { get; set; }
 
         public ICollection<Position> Positions { get; set; }
     }
