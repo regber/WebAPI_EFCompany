@@ -27,6 +27,8 @@ namespace WebAPI_EFCompany
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().OwnsOne(m => m.Member);
+            modelBuilder.Entity<Employee>().HasOne(e=>e.Position).WithMany(p=>p.Employees).HasForeignKey(e=>e.PositionId);
+            modelBuilder.Entity<Position>().HasOne(p => p.Head);
         }
     }
 }
