@@ -43,6 +43,8 @@ namespace WebAPI_EFCompany
                 options.IncludeXmlComments(filePath);
             });
 
+            services.AddDbContext<Context>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

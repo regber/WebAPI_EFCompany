@@ -4,11 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using WebAPI_EFCompany.Model;
 
 namespace WebAPI_EFCompany
 {
     public class Context:DbContext
     {
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
         public Context()
         {
             Database.EnsureCreated();
@@ -21,6 +26,7 @@ namespace WebAPI_EFCompany
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Employee>().OwnsOne(m => m.Member);
         }
     }
 }
