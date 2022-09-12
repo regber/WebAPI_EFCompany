@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zevas\\source\\repos\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj": {}
+    "C:\\Users\\Zevas\\source\\repos\\TestEF\\EF1\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zevas\\source\\repos\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj": {
+    "C:\\Users\\Zevas\\source\\repos\\TestEF\\EF1\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zevas\\source\\repos\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj",
+        "projectUniqueName": "C:\\Users\\Zevas\\source\\repos\\TestEF\\EF1\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj",
         "projectName": "WebAPI_EFCompany",
-        "projectPath": "C:\\Users\\Zevas\\source\\repos\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj",
+        "projectPath": "C:\\Users\\Zevas\\source\\repos\\TestEF\\EF1\\WebAPI_EFCompany\\WebAPI_EFCompany\\WebAPI_EFCompany.csproj",
         "packagesPath": "C:\\Users\\Zevas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zevas\\source\\repos\\WebAPI_EFCompany\\WebAPI_EFCompany\\obj\\",
+        "outputPath": "C:\\Users\\Zevas\\source\\repos\\TestEF\\EF1\\WebAPI_EFCompany\\WebAPI_EFCompany\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -44,6 +44,20 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
