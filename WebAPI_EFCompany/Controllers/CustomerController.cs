@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI_EFCompany.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI_EFCompany.Controllers
 {
@@ -13,11 +15,27 @@ namespace WebAPI_EFCompany.Controllers
         /// <summary>
         /// This is the API which will return a list of customers
         /// </summary>
-        /// <returns></returns>
+        /// <returns>abrakadabra</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            string str = "";
+
+            using (Context db = new Context())
+            {
+                var departments = db.Departments.Include(d=>d.Positions).ToList();
+
+                foreach (var d in departments)
+                {
+                    foreach(var p in d.Positions)
+                    {
+                        str += $"Name:{d.Name} PositName:{p.Name}" + Environment.NewLine;
+                    }
+                    
+                    //str += $"name:{p.Name}-count:{p.Positions.Count()}"+ Environment.NewLine;
+                }
+                return str;//db.Departments.ToList().Select(d=>d.Name);
+            }
         }
 
         // GET: api/Customer/5
