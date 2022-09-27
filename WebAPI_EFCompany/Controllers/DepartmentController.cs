@@ -10,7 +10,7 @@ namespace WebAPI_EFCompany.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class DepartmentController : ControllerBase
     {
 
 
@@ -64,14 +64,12 @@ namespace WebAPI_EFCompany.Controllers
         [HttpGet("GetDepartments")]
         public JsonResult GetDepartments()
         {
-            List<Department> departments = new List<Department>();
-
             using (Context db = new Context())
             {
-                departments = db.Departments.ToList();
-            }
+                var departments = db.Departments.Include(d => d.Head).Include(d => d.Positions).Select(d => new { Id = d.Id, Name = d.Name, Head = d.Head, PositionsCount = d.Positions.Count() }).ToList();
 
-            return new JsonResult(departments);
+                return new JsonResult(departments);
+            }
         }
 
         [HttpGet("GetDepartmentPositions")]
