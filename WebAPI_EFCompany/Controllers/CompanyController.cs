@@ -10,10 +10,10 @@ namespace WebAPI_EFCompany.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CompanyController : ControllerBase
     {
 
-        public CustomerController()
+        public CompanyController()
         {
             using (Context db = new Context())
             {
@@ -124,7 +124,7 @@ namespace WebAPI_EFCompany.Controllers
                     {
                         foreach(var e in p.Employees)
                         {
-                            str += $"Name:{d.Name} PositName:{p.Name}  EmplName: {e.Member.FirstName}" + Environment.NewLine;
+                            str += $"Name: {d.Name} PositName: {p.Name}  EmplName: {e.Member.FirstName}" + Environment.NewLine;
                         }
                         
                     }
