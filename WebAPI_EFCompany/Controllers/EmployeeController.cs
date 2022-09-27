@@ -122,13 +122,11 @@ namespace WebAPI_EFCompany.Controllers
         [HttpPut("EditEmployee")]
         public bool EditEmployee(int employeeId,int positionNumber, int age, string firstName, string lastName, string middleName, string passportSeries, string passportNumber)
         {
-
-
             using (Context db = new Context())
             {
                 try
                 {
-                    var employee = db.Employees/*.Include(e=>e.Member).Include(e=>e.PositionNumber)*/.FirstOrDefault(e => e.Id == employeeId);
+                    var employee = db.Employees.FirstOrDefault(e => e.Id == employeeId);
                     var perviousInfoPositionNimber = employee.PositionNumber;
                     var perviousInfoMember = employee.Member;
 

@@ -12,59 +12,6 @@ namespace WebAPI_EFCompany.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-
-        /// <summary>
-        /// Добавить отдел
-        /// </summary>
-        /// <param name="departmentName">Имя отдела</param>
-        /// <returns></returns>
-        [HttpPost("AddDepartment")]
-        public bool AddDepartment(string departmentName)
-        {
-            using (Context db = new Context())
-            {
-                try
-                {
-                    db.Departments.Add(new Department { Name = departmentName });
-
-                    db.SaveChanges();
-
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Удалить отдел с указанным Id
-        /// </summary>
-        /// <param name="departmentId">Id отдела</param>
-        /// <returns>Возвращает true если операция прошла успешно</returns>
-        [HttpDelete("DeleteDepartment")]
-        public bool DeleteDepartment(int departmentId)
-        {
-            using (Context db = new Context())
-            {
-                try
-                {
-                    var department=db.Departments.FirstOrDefault(d => d.Id == departmentId);
-
-                    db.Departments.Remove(department);
-
-                    db.SaveChanges();
-
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
         /// <summary>
         /// Получить список отделов с основной информацией
         /// </summary>
@@ -138,6 +85,89 @@ namespace WebAPI_EFCompany.Controllers
             }
 
             return new JsonResult(head);
+        }
+
+        /// <summary>
+        /// Добавить отдел
+        /// </summary>
+        /// <param name="departmentName">Имя отдела</param>
+        /// <returns></returns>
+        [HttpPost("AddDepartment")]
+        public bool AddDepartment(string departmentName)
+        {
+            using (Context db = new Context())
+            {
+                try
+                {
+                    db.Departments.Add(new Department { Name = departmentName });
+
+                    db.SaveChanges();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Удалить отдел с указанным Id
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <returns>Возвращает true если операция прошла успешно</returns>
+        [HttpDelete("DeleteDepartment")]
+        public bool DeleteDepartment(int departmentId)
+        {
+            using (Context db = new Context())
+            {
+                try
+                {
+                    var department = db.Departments.FirstOrDefault(d => d.Id == departmentId);
+
+                    db.Departments.Remove(department);
+
+                    db.SaveChanges();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Изменить данные отдела
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <param name="departmentName">Новое название отдела</param>
+        /// <returns></returns>
+        [HttpPut("EditDepartment")]
+        public bool EditDepartment(int departmentId, string departmentName)
+        {
+
+            using (Context db = new Context())
+            {
+                try
+                {
+                    var department = db.Departments.FirstOrDefault(e => e.Id == departmentId);
+
+                    var perviousDepartmentName = department.Name;
+
+                    department.Name = departmentName == null ? perviousDepartmentName : departmentName;
+
+                    db.SaveChanges();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
