@@ -13,12 +13,11 @@ namespace WebAPI_EFCompany.Controllers
     public class DepartmentController : ControllerBase
     {
 
-
-
         /// <summary>
-        /// This is the API which will return a list of customers
+        /// Добавить отдел
         /// </summary>
-        /// <returns>abrakadabra</returns>
+        /// <param name="departmentName">Имя отдела</param>
+        /// <returns></returns>
         [HttpPost("AddDepartment")]
         public bool AddDepartment(string departmentName)
         {
@@ -39,6 +38,11 @@ namespace WebAPI_EFCompany.Controllers
             }
         }
 
+        /// <summary>
+        /// Удалить отдел с указанным Id
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <returns>Возвращает true если операция прошла успешно</returns>
         [HttpDelete("DeleteDepartment")]
         public bool DeleteDepartment(int departmentId)
         {
@@ -61,6 +65,10 @@ namespace WebAPI_EFCompany.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить список отделов с основной информацией
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetDepartments")]
         public JsonResult GetDepartments()
         {
@@ -72,6 +80,11 @@ namespace WebAPI_EFCompany.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить список должностей отдела
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <returns></returns>
         [HttpGet("GetDepartmentPositions")]
         public JsonResult GetDepartmentPositions(int departmentId)
         {
@@ -90,6 +103,11 @@ namespace WebAPI_EFCompany.Controllers
             return new JsonResult(departmentPositions);
         }
 
+        /// <summary>
+        /// Получить работников отдела
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <returns></returns>
         [HttpGet("GetDepartmentEmployees")]
         public JsonResult GetDepartmentEmployees(int departmentId)
         {
@@ -103,6 +121,11 @@ namespace WebAPI_EFCompany.Controllers
             return new JsonResult(departmentEmployees);
         }
 
+        /// <summary>
+        /// Получить главу отдела
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <returns></returns>
         [HttpGet("GetDepartmentHead")]
         public JsonResult GetDepartmentHead(int departmentId)
         {
@@ -117,6 +140,12 @@ namespace WebAPI_EFCompany.Controllers
             return new JsonResult(head);
         }
 
+        /// <summary>
+        /// Назначить главу отдела
+        /// </summary>
+        /// <param name="departmentId">Id отдела</param>
+        /// <param name="employeeId">Id работника</param>
+        /// <returns></returns>
         [HttpPut("SetDepartmentHead")]
         public bool SetDepartmentHead( int departmentId, int employeeId)
         {
