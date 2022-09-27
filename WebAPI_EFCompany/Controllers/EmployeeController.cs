@@ -13,6 +13,11 @@ namespace WebAPI_EFCompany.Controllers
     [ApiController]
     public class EmployeeController : Controller
     {
+        /// <summary>
+        /// Получить данные работника по его Id
+        /// </summary>
+        /// <param name="employeeId">Id работника</param>
+        /// <returns></returns>
         [HttpGet("GetEmployee")]
         public JsonResult GetEmployee(int employeeId)
         {
@@ -24,6 +29,10 @@ namespace WebAPI_EFCompany.Controllers
             }  
         }
 
+        /// <summary>
+        /// Получить список работников
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetEmployees")]
         public JsonResult GetEmployees()
         {
@@ -37,6 +46,18 @@ namespace WebAPI_EFCompany.Controllers
             return new JsonResult(employees);
         }
 
+
+        /// <summary>
+        /// Добавить работника
+        /// </summary>
+        /// <param name="positionNumber">Id должности</param>
+        /// <param name="age">Возраст работника</param>
+        /// <param name="firstName">Имя работника</param>
+        /// <param name="lastName">Фамилия работника</param>
+        /// <param name="middleName">Отчество работника</param>
+        /// <param name="passportSeries">Серия паспорта</param>
+        /// <param name="passportNumber">Номер паспорта</param>
+        /// <returns></returns>
         [HttpPost("AddEmployee")]
         public bool AddEmployee(int positionNumber, int age, string firstName, string lastName, string middleName, string passportSeries, string passportNumber )
         {
@@ -59,6 +80,11 @@ namespace WebAPI_EFCompany.Controllers
             }
         }
 
+        /// <summary>
+        /// Удалить работника по его Id
+        /// </summary>
+        /// <param name="employeeId">Id работника</param>
+        /// <returns></returns>
         [HttpDelete("DeleteEmployee")]
         public bool DeleteEmployee(int employeeId)
         {
@@ -81,6 +107,18 @@ namespace WebAPI_EFCompany.Controllers
             }
         }
 
+        /// <summary>
+        /// Изменить данные работника
+        /// </summary>
+        /// <param name="employeeId">Id работника</param>
+        /// <param name="positionNumber">Id должности</param>
+        /// <param name="age">Возраст работника</param>
+        /// <param name="firstName">Имя работника</param>
+        /// <param name="lastName">Фамилия работника</param>
+        /// <param name="middleName">Отчество работника</param>
+        /// <param name="passportSeries">Серия паспорта</param>
+        /// <param name="passportNumber">Номер паспорта</param>
+        /// <returns></returns>
         [HttpPut("EditEmployee")]
         public bool EditEmployee(int employeeId,int positionNumber, int age, string firstName, string lastName, string middleName, string passportSeries, string passportNumber)
         {
