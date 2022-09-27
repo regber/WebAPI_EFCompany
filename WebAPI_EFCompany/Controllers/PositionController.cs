@@ -9,7 +9,7 @@ namespace WebAPI_EFCompany.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HomeController : Controller
+    public class PositionController : Controller
     {
         [HttpGet("Index")]
         public string Index()
